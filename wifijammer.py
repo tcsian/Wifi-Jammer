@@ -1,7 +1,6 @@
-#!/usr/bin/env python
 
 import logging
-logging.getLogger("scapy.runtime").setLevel(logging.ERROR) # Shut up Scapy
+logging.getLogger("scapy.runtime").setLevel(logging.ERROR) 
 from scapy.all import *
 conf.verb = 0 # Scapy I thought I told you to shut up
 import os
@@ -86,11 +85,6 @@ def parse_args():
 
     return parser.parse_args()
 
-
-########################################
-# Begin interface info and manipulation
-########################################
-
 def get_mon_iface(args):
     global monitor_on
     monitors, interfaces = iwconfig()
@@ -106,7 +100,7 @@ def get_mon_iface(args):
         interface = get_iface(interfaces)
         monmode = start_mon_mode(interface)
         return monmode
-
+#begin
 def iwconfig():
     monitors = []
     interfaces = {}
@@ -182,11 +176,7 @@ def mon_mac(mon_iface):
     print '['+G+'*'+W+'] Monitor mode: '+G+mon_iface+W+' - '+O+mac+W
     return mac
 
-########################################
-# End of interface info and manipulation
-########################################
-
-
+#End
 def channel_hop(mon_iface, args):
     '''
     First time it runs through the channels it stays on each channel for 5 seconds
